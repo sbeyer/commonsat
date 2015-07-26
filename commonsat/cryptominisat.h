@@ -1,5 +1,5 @@
 /*! \file
- * \brief Definition of the MiniSat interface for CommonSAT.
+ * \brief Definition of the CryptoMiniSat interface for CommonSAT.
  * \copyright Copyright 2015 Stephan Beyer.
  * \par
  * This file is part of CommonSAT.
@@ -23,31 +23,31 @@
  * THE SOFTWARE.
  */
 
-#ifndef COMMONSAT_MINISAT_H
-#define COMMONSAT_MINISAT_H
+#ifndef COMMONSAT_CRYPTOMINISAT_H
+#define COMMONSAT_CRYPTOMINISAT_H
 
 #include <cassert>
 #include <commonsat/commonsat.h>
-#include <minisat/core/Solver.h>
+#include <cryptominisat4/cryptominisat.h>
 
 namespace commonsat {
 
-//! The solver interface for MiniSat
-class SolverMinisat : public SolverInterface {
+//! The solver interface for CryptoMiniSat
+class SolverCryptominisat : public SolverInterface {
 protected:
-	Minisat::Solver m_solver;
+	CMSat::SATSolver m_solver;
 	int m_variable_count;
 
 	//! Guarantee that we have \v max_id many variables
 	void make_variables(int max_id)
 	{
 		for (; m_variable_count < max_id; ++m_variable_count) {
-			m_solver.newVar();
+			m_solver.new_var();
 		}
 	}
 
 public:
-	SolverMinisat()
+	SolverCryptominisat()
 	  : m_solver()
 	  , m_variable_count(0)
 	{
@@ -55,22 +55,22 @@ public:
 
 	void add_clause(const std::vector<int> &clause)
 	{
-		Minisat::vec<Minisat::Lit> tmp;
+		std::vector<CMSat::Lit> tmp;
 		for (const auto &lit : clause) {
 			assert(lit != 0);
 			auto var_id = abs(lit);
 			make_variables(var_id);
-			tmp.push(Minisat::mkLit(var_id - 1, var_id != lit));
+			tmp.emplace_back(CMSat::Lit(var_id - 1, var_id != lit));
 		}
-		m_solver.addClause_(tmp);
+		m_solver.add_clause(tmp);
 	}
 
 	bool solve()
 	{
-		return m_solver.solve();
+		return m_solver.solve() == CMSat::l_True; // == l_False is nonsatisfiable
 	}
 };
 
 }
 
-#endif // COMMONSAT_MINISAT_H
+#endif // COMMONSAT_CRYPTOMINISAT_H

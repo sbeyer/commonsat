@@ -15,7 +15,7 @@ It is a header-only library, providing a common interface for
  - [ ] freezing and thawing variables for incremental computations
 for SAT solver libraries like
  - [X] MiniSAT
- - [ ] CryptoMiniSat
+ - [X] CryptoMiniSat
  - [X] Lingeling
  - [ ] Plingeling
  - [ ] Treengeling
