@@ -5,16 +5,16 @@ CommonSAT is intended as a common C++11 SAT solver interface for different SAT s
 It is a header-only library, providing a common interface for
  - [ ] reading CNFs in DIMACS format
  - [ ] writing CNFs in DIMACS format
- - [ ] generating CNF formulaes
- - [ ] solving them (sequentially)
+ - [X] generating CNF formulae
+ - [X] solving them (sequentially)
  - [ ] solving them in parallel
- - [ ] obtaining satisfiability or non-satisfiability information
+ - [X] obtaining satisfiability or non-satisfiability information
  - [ ] obtaining a satisfiable assignment (if satisfiable)
  - [ ] obtaining conflict information (if non-satisfiable)
  - [ ] obtaining information about the computation
  - [ ] freezing and thawing variables for incremental computations
 for SAT solver libraries like
- - [ ] MiniSAT
+ - [X] MiniSAT
  - [ ] CryptoMiniSat
  - [ ] Lingeling
  - [ ] Plingeling

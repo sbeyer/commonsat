@@ -1,5 +1,5 @@
 /*! \file
- * \brief Definition of the main interface for CommonSAT.
+ * \brief Definition of the MiniSat interface for CommonSAT.
  * \copyright Copyright 2015 Stephan Beyer.
  * \par
  * This file is part of CommonSAT.
@@ -23,29 +23,53 @@
  * THE SOFTWARE.
  */
 
-#ifndef COMMONSAT_H
-#define COMMONSAT_H
+#ifndef COMMONSAT_MINISAT_H
+#define COMMONSAT_MINISAT_H
 
-#include <vector>
+#include <commonsat/commonsat.h>
+#include <minisat/core/Solver.h>
 
 namespace commonsat {
 
-//! The general solver interface class
-class SolverInterface {
+//! The solver interface for MiniSat
+class SolverMinisat : public SolverInterface {
+protected:
+	Minisat::Solver m_solver;
+	int m_variable_count;
+
+	//! Guarantee that we have \v max_id many variables
+	void make_variables(int max_id)
+	{
+		for (; m_variable_count < max_id; ++m_variable_count) {
+			m_solver.newVar();
+		}
+	}
+
 public:
-	SolverInterface()
+	SolverMinisat()
+	  : m_solver()
+	  , m_variable_count(0)
 	{
 	}
 
-	//! Add a clause to the CNF
-	// \example add_clause({1, -2, -3, 6}) adds clause {x_1, not x_2, not x_3, x_6}
-	virtual void add_clause(const std::vector<int> &clause) = 0;
+	void add_clause(const std::vector<int> &clause)
+	{
+		Minisat::vec<Minisat::Lit> tmp;
+		for (const auto &lit : clause) {
+			assert(lit != 0);
+			auto var_id = abs(lit);
+			make_variables(var_id);
+			tmp.push(Minisat::mkLit(var_id - 1, var_id != lit));
+		}
+		m_solver.addClause_(tmp);
+	}
 
-	//! Solve the CNF given by the added clauses
-	// \return true if the CNF is satisfiable, false if not
-	virtual bool solve() = 0;
+	bool solve()
+	{
+		return m_solver.solve();
+	}
 };
 
 }
 
-#endif // COMMONSAT_H
+#endif // COMMONSAT_MINISAT_H

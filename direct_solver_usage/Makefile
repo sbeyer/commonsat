@@ -8,7 +8,7 @@ MINISAT_INCLUDE=../solvers/minisat
 MINISAT_LIB=../solvers/minisat
 LINGELING_INCLUDE=../solvers/lingeling-cssc14/lingeling-azf-9203284-140522
 LINGELING_LIB=../solvers/lingeling-cssc14/lingeling-azf-9203284-140522
-BINARIES=cryptominisat4 minisat lingeling
+BINARIES=cryptominisat4 minisat lingeling test_minisat
 
 .PHONY: all run clean
 
@@ -18,6 +18,7 @@ run: all
 	LD_LIBRARY_PATH=$(CRYPTOMINISAT4_LIB) ./cryptominisat4
 	LD_LIBRARY_PATH=$(MINISAT_LIB) ./minisat
 	LD_LIBRARY_PATH=$(LINGELING_LIB) ./lingeling
+	LD_LIBRARY_PATH=$(MINISAT_LIB) ./test_minisat
 
 clean:
 	rm -f $(BINARIES)
@@ -27,6 +28,9 @@ cryptominisat4: cryptominisat4.cc
 
 minisat: minisat.cc
 	"$(CXX)" $(CXXFLAGS) -I"$(MINISAT_INCLUDE)" -L"$(MINISAT_LIB)" -lminisat -o "$@" "$<"
+
+test_minisat: test_minisat.cc
+	"$(CXX)" $(CXXFLAGS) -I.. -I"$(MINISAT_INCLUDE)" -L"$(MINISAT_LIB)" -lminisat -o "$@" "$<"
 
 lingeling: lingeling.cc
 	"$(CXX)" $(CXXFLAGS) -I"$(LINGELING_INCLUDE)" -L"$(LINGELING_LIB)" "$<" -llgl -o "$@"
