@@ -1,0 +1,5 @@
+/Makefile
+CMakeCache.txt
+/CMakeFiles
+/doc
+cmake_install.cmake
