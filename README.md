@@ -16,7 +16,7 @@ It is a header-only library, providing a common interface for
 for SAT solver libraries like
  - [X] MiniSAT
  - [ ] CryptoMiniSat
- - [ ] Lingeling
+ - [X] Lingeling
  - [ ] Plingeling
  - [ ] Treengeling
  - [ ] PicoSat
