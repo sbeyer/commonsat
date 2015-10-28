@@ -1,5 +1,5 @@
-/Makefile
+Makefile
 CMakeCache.txt
-/CMakeFiles
-/doc
+CMakeFiles
 cmake_install.cmake
+/doc
