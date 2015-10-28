@@ -8,7 +8,7 @@ include_directories("${PROJECT_SOURCE_DIR}/")
 
 if(USE_MINISAT)
 	set(MINISAT_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/minisat/libminisat.so"
+	    "${PROJECT_SOURCE_DIR}/solvers/minisat/build/release/lib/libminisat.a"
 	    CACHE FILEPATH "Library for MiniSat")
 	set(MINISAT_INCLUDE_DIR
 	    "${PROJECT_SOURCE_DIR}/solvers/minisat"
@@ -22,24 +22,27 @@ endif(USE_MINISAT)
 
 if(USE_CRYPTOMINISAT)
 	set(CRYPTOMINISAT4_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/lib/libcryptominisat4.so"
+	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/lib/libcryptominisat4.a"
 	    CACHE FILEPATH "Library for CryptoMiniSat 4")
 	set(CRYPTOMINISAT4_INCLUDE_DIR
 	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/include"
 	    CACHE PATH "Include directory for CryptoMiniSat 4")
+	find_package(Threads)
 	include_directories("${CRYPTOMINISAT4_INCLUDE_DIR}")
 	add_executable(cryptominisat4 cryptominisat4.cc)
 	add_executable(test_cryptominisat test_cryptominisat.cc test.cc)
-	target_link_libraries(cryptominisat4 ${CRYPTOMINISAT4_LIBRARY})
-	target_link_libraries(test_cryptominisat ${CRYPTOMINISAT4_LIBRARY})
+	target_link_libraries(cryptominisat4
+	    ${CRYPTOMINISAT4_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})
+	target_link_libraries(test_cryptominisat
+	    ${CRYPTOMINISAT4_LIBRARY} ${CMAKE_THREAD_LIBS_INIT})
 endif(USE_CRYPTOMINISAT)
 
 if(USE_LINGELING)
 	set(LINGELING_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/lingeling-cssc14/lingeling-azf-9203284-140522/liblgl.a"
+	    "${PROJECT_SOURCE_DIR}/solvers/lingeling/code/liblgl.a"
 	    CACHE FILEPATH "Library for lingeling")
 	set(LINGELING_INCLUDE_DIR
-	    "${PROJECT_SOURCE_DIR}/solvers/lingeling-cssc14/lingeling-azf-9203284-140522"
+	    "${PROJECT_SOURCE_DIR}/solvers/lingeling/code"
 	    CACHE PATH "Include directory for lingeling")
 	include_directories("${LINGELING_INCLUDE_DIR}")
 	add_executable(lingeling lingeling.cc)
