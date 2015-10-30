@@ -1,10 +1,4 @@
 #include <commonsat/minisat.h>
+#include "tests.h"
 
-extern void test_commonsat(commonsat::SolverInterface &solver);
-
-int main()
-{
-	commonsat::SolverMinisat solver;
-	test_commonsat(solver);
-	return 0;
-}
+RUN_TESTS_FOR_SOLVER(Minisat)

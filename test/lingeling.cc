@@ -1,10 +1,4 @@
 #include <commonsat/lingeling.h>
+#include "tests.h"
 
-extern void test_commonsat(commonsat::SolverInterface &solver);
-
-int main()
-{
-	commonsat::SolverLingeling solver;
-	test_commonsat(solver);
-	return 0;
-}
+RUN_TESTS_FOR_SOLVER(Lingeling)

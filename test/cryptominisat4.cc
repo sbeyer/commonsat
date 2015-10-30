@@ -1,10 +1,4 @@
 #include <commonsat/cryptominisat.h>
+#include "tests.h"
 
-extern void test_commonsat(commonsat::SolverInterface &solver);
-
-int main()
-{
-	commonsat::SolverCryptominisat solver;
-	test_commonsat(solver);
-	return 0;
-}
+RUN_TESTS_FOR_SOLVER(Cryptominisat)
