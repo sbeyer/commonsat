@@ -2,6 +2,3 @@ Makefile
 cryptominisat4
 minisat
 lingeling
-test_minisat
-test_lingeling
-test_cryptominisat
