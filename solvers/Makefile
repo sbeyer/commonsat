@@ -24,7 +24,7 @@ compile_minisat:
 	$(MAKE) -C minisat/build
 
 compile_cryptominisat:
-	cd cryptominisat && mkdir -p build && cd build && cmake ..
+	cd cryptominisat && mkdir -p build && cd build && cmake -DENABLE_PYTHON_INTERFACE=OFF ..
 	$(MAKE) -C cryptominisat/build
 
 compile_lingeling:
