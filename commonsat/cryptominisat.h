@@ -26,7 +26,7 @@
 #ifndef COMMONSAT_CRYPTOMINISAT_H
 #define COMMONSAT_CRYPTOMINISAT_H
 
-#include <cassert>
+#include <stdexcept>
 #include <commonsat/commonsat.h>
 #include <cryptominisat4/cryptominisat.h>
 
@@ -44,6 +44,11 @@ protected:
 		for (; m_variable_count < max_id; ++m_variable_count) {
 			m_solver.new_var();
 		}
+#ifndef NDEBUG
+		if (m_variable_count != int(m_solver.nVars())) {
+			throw std::logic_error("number of variables of front-end and back-end deviate");
+		}
+#endif
 	}
 
 public:
@@ -57,7 +62,11 @@ public:
 	{
 		std::vector<CMSat::Lit> tmp;
 		for (const auto &lit : clause) {
-			assert(lit != 0);
+#ifndef NDEBUG
+			if (lit == 0) {
+				throw std::logic_error("0 must not be an id for a variable");
+			}
+#endif
 			auto var_id = abs(lit);
 			make_variables(var_id);
 			tmp.emplace_back(CMSat::Lit(var_id - 1, var_id != lit));
@@ -68,6 +77,25 @@ public:
 	bool solve()
 	{
 		return m_solver.solve() == CMSat::l_True; // == l_False is nonsatisfiable
+	}
+
+	Assignment get_assignment(int var) const
+	{
+#ifndef NDEBUG
+		if (var <= 0 || var > m_variable_count) {
+			throw std::out_of_range("indexed non-existent variable");
+		}
+#endif
+
+		const CMSat::lbool assignment = m_solver.get_model()[var - 1];
+
+		if (assignment == CMSat::lbool(uint8_t(0))) {
+			return Assignment::True;
+		}
+		if (assignment == CMSat::lbool(uint8_t(1))) {
+			return Assignment::False;
+		}
+		return Assignment::Undefined;
 	}
 };
 

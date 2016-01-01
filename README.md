@@ -10,7 +10,7 @@ It is a header-only library, providing a common interface for
  - [X] solving them (sequentially)
  - [ ] solving them in parallel
  - [X] obtaining satisfiability or non-satisfiability information
- - [ ] obtaining a satisfiable assignment (if satisfiable)
+ - [X] obtaining a satisfiable assignment (if satisfiable)
  - [ ] obtaining conflict information (if non-satisfiable)
  - [ ] obtaining information about the computation
  - [ ] freezing and thawing variables for incremental computations

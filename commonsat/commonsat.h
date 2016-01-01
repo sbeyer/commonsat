@@ -26,11 +26,20 @@
 #ifndef COMMONSAT_H
 #define COMMONSAT_H
 
+#include <stdexcept>
 #include <vector>
+#include <cstdint>
 
 namespace commonsat {
 
 using clause_t = std::vector<int>;
+
+//! A Boolean or undefined assignment of a variable
+enum class Assignment : std::uint8_t {
+	Undefined = 0,
+	False = 2,
+	True = 3,
+};
 
 //! The general solver interface class
 class SolverInterface {
@@ -46,6 +55,28 @@ public:
 	//! Solve the CNF given by the added clauses
 	// \return true if the CNF is satisfiable, false if not
 	virtual bool solve() = 0;
+
+	//! Get assignment of a variable
+	// \return the assignment
+	virtual Assignment get_assignment(int var) const = 0;
+
+	//! Return true if a variable assignment is defined
+	bool is_assigned(int var) const
+	{
+		return int(get_assignment(var)) & 2;
+	}
+
+	//! Return true if a variable is assigned true
+	bool is_true(int var) const
+	{
+		return int(get_assignment(var)) & 1;
+	}
+
+	//! Return true if a variable is assigned false
+	bool is_false(int var) const
+	{
+		return is_assigned(var) && !is_true(var);
+	}
 };
 
 }

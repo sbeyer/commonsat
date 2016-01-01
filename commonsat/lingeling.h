@@ -61,6 +61,18 @@ public:
 	{
 		return lglsat(m_solver) == 10; // == 20 is nonsatisfiable
 	}
+
+	Assignment get_assignment(int var) const
+	{
+		int assignment = lglderef(m_solver, var);
+		if (assignment > 0) {
+			return Assignment::True;
+		}
+		if (assignment < 0) {
+			return Assignment::False;
+		}
+		return Assignment::Undefined;
+	}
 };
 
 }
