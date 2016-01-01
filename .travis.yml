@@ -1,0 +1,25 @@
+language: cpp
+
+os: linux
+sudo: required
+dist: trusty
+
+compiler:
+  - clang
+  - gcc
+
+git:
+  depth: 3
+  submodules: false
+
+before_install:
+  - git submodule update --init --recursive
+
+install:
+  - make -C solvers
+
+script:
+  - cmake -DUSE_CRYPTOMINISAT=ON -DUSE_LINGELING=ON -DUSE_MINISAT=ON . && make && ctest --verbose
+
+after_success:
+  - make doc
