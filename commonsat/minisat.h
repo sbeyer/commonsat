@@ -58,7 +58,7 @@ public:
 	{
 	}
 
-	void add_clause(const clause_t &clause)
+	void add_clause(const clause_t &clause) override
 	{
 		Minisat::vec<Minisat::Lit> tmp;
 		for (const auto &lit : clause) {
@@ -74,12 +74,12 @@ public:
 		m_solver.addClause_(tmp);
 	}
 
-	bool solve()
+	bool solve() override
 	{
 		return m_solver.solve();
 	}
 
-	Assignment get_assignment(int var) const
+	Assignment get_assignment(int var) const override
 	{
 #ifndef NDEBUG
 		if (var <= 0 || var > m_variable_count) {

@@ -49,7 +49,7 @@ public:
 		free(m_solver);
 	}
 
-	void add_clause(const clause_t &clause)
+	void add_clause(const clause_t &clause) override
 	{
 		for (const auto &lit : clause) {
 			lgladd(m_solver, lit);
@@ -57,12 +57,12 @@ public:
 		lgladd(m_solver, 0);
 	}
 
-	bool solve()
+	bool solve() override
 	{
 		return lglsat(m_solver) == 10; // == 20 is nonsatisfiable
 	}
 
-	Assignment get_assignment(int var) const
+	Assignment get_assignment(int var) const override
 	{
 		int assignment = lglderef(m_solver, var);
 		if (assignment > 0) {

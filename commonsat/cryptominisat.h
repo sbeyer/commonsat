@@ -58,7 +58,7 @@ public:
 	{
 	}
 
-	void add_clause(const clause_t &clause)
+	void add_clause(const clause_t &clause) override
 	{
 		std::vector<CMSat::Lit> tmp;
 		for (const auto &lit : clause) {
@@ -74,12 +74,12 @@ public:
 		m_solver.add_clause(tmp);
 	}
 
-	bool solve()
+	bool solve() override
 	{
 		return m_solver.solve() == CMSat::l_True; // == l_False is nonsatisfiable
 	}
 
-	Assignment get_assignment(int var) const
+	Assignment get_assignment(int var) const override
 	{
 #ifndef NDEBUG
 		if (var <= 0 || var > m_variable_count) {
