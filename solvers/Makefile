@@ -4,32 +4,30 @@ LINGELING_VERSION=ayv-86bf266-140429
 
 minisat:
 	git clone https://github.com/niklasso/minisat
-	@echo ""
-	@echo "Minisat fetched."
-	@echo ""
-	@echo "In the minisat directory do:"
-	@echo ""
-	@echo "    cmake . && make"
-	@echo ""
+	$(MAKE) compile_minisat
 
 cryptominisat:
 	git clone https://github.com/msoos/cryptominisat.git
-	@echo ""
-	@echo "CryptoMinisat fetched."
-	@echo ""
-	@echo "In the cryptominisat directory do:"
-	@echo ""
-	@echo "    make"
-	@echo ""
+	$(MAKE) compile_cryptominisat
 
 lingeling:
 	curl -o ll.zip http://fmv.jku.at/lingeling/lingeling-$(LINGELING_VERSION).zip
 	unzip -d lingeling ll.zip
 	$(RM) ll.zip
-	@echo ""
-	@echo "Lingeling fetched."
-	@echo ""
-	@echo "In the lingeling directory do:"
-	@echo ""
-	@echo "    ./build.sh"
-	@echo ""
+	$(MAKE) compile_lingeling
+
+.PHONY: compile_all \
+  compile_minisat compile_cryptominisat compile_lingeling
+
+compile_minisat:
+	cd minisat && mkdir -p build && cd build && cmake ..
+	$(MAKE) -C minisat/build
+
+compile_cryptominisat:
+	cd cryptominisat && mkdir -p build && cd build && cmake ..
+	$(MAKE) -C cryptominisat/build
+
+compile_lingeling:
+	cd lingeling && ./build.sh
+
+compile_all: compile_minisat compile_cryptominisat compile_lingeling

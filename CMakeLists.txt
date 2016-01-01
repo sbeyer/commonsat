@@ -14,7 +14,7 @@ enable_testing()
 
 if(USE_MINISAT)
 	set(MINISAT_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/minisat/build/release/lib/libminisat.a"
+	    "${PROJECT_SOURCE_DIR}/solvers/minisat/build/libminisat.a"
 	    CACHE FILEPATH "Library for MiniSat")
 	set(MINISAT_INCLUDE_DIR
 	    "${PROJECT_SOURCE_DIR}/solvers/minisat"
@@ -24,10 +24,10 @@ endif(USE_MINISAT)
 
 if(USE_CRYPTOMINISAT)
 	set(CRYPTOMINISAT4_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/lib/libcryptominisat4.a"
+	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/build/lib/libcryptominisat4.a"
 	    CACHE FILEPATH "Library for CryptoMiniSat 4")
 	set(CRYPTOMINISAT4_INCLUDE_DIR
-	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/include"
+	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/build/include"
 	    CACHE PATH "Include directory for CryptoMiniSat 4")
 	add_test(NAME CryptoMiniSat COMMAND test_cryptominisat4)
 endif(USE_CRYPTOMINISAT)
