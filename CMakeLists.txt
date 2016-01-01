@@ -42,7 +42,6 @@ if(USE_LINGELING)
 	add_test(NAME Lingeling COMMAND test_lingeling)
 endif(USE_LINGELING)
 
-add_subdirectory(direct_solver_usage)
 add_subdirectory(test)
 
 find_package(Doxygen)
