@@ -7,6 +7,11 @@ dist: trusty
 compiler:
   - gcc
 
+addons:
+  apt:
+    packages:
+      - doxygen
+
 git:
   depth: 3
   submodules: false
