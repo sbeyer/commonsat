@@ -53,7 +53,7 @@ public:
 	{
 	}
 
-	void add_clause(const std::vector<int> &clause)
+	void add_clause(const clause_t &clause)
 	{
 		Minisat::vec<Minisat::Lit> tmp;
 		for (const auto &lit : clause) {

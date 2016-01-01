@@ -49,7 +49,7 @@ public:
 		free(m_solver);
 	}
 
-	void add_clause(const std::vector<int> &clause)
+	void add_clause(const clause_t &clause)
 	{
 		for (const auto &lit : clause) {
 			lgladd(m_solver, lit);
