@@ -28,3 +28,5 @@ for SAT solver libraries like
 
 Note that the things mentioned above are TODO list items that are probably not
 implemented.
+
+[![Build Status](https://travis-ci.org/sbeyer/commonsat.svg)](https://travis-ci.org/sbeyer/commonsat)
