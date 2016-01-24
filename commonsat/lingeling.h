@@ -36,7 +36,7 @@ namespace commonsat {
 //! The solver interface for Lingeling
 class SolverLingeling : public SolverInterface {
 protected:
-	LGL *m_solver;
+	LGL *m_solver; //!< An pointer to an instance of the Lingeling solver
 
 public:
 	SolverLingeling()

@@ -35,8 +35,8 @@ namespace commonsat {
 //! The solver interface for CryptoMiniSat
 class SolverCryptominisat : public SolverInterface {
 protected:
-	CMSat::SATSolver m_solver;
-	int m_variable_count;
+	CMSat::SATSolver m_solver; //!< An instance of the CryptoMiniSat solver
+	int m_variable_count; //!< The number of variables in the model
 
 	//! Guarantee that we have \p max_id many variables
 	void make_variables(int max_id)

@@ -32,6 +32,7 @@
 
 namespace commonsat {
 
+//! A clause type
 using clause_t = std::vector<int>;
 
 //! A Boolean or undefined assignment of a variable

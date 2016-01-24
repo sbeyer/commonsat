@@ -35,8 +35,8 @@ namespace commonsat {
 //! The solver interface for MiniSat
 class SolverMinisat : public SolverInterface {
 protected:
-	Minisat::Solver m_solver;
-	int m_variable_count;
+	Minisat::Solver m_solver; //!< An instance of the MiniSat solver
+	int m_variable_count; //!< The number of variables in the model
 
 	//! Guarantee that we have \p max_id many variables
 	void make_variables(int max_id)
