@@ -38,7 +38,7 @@ protected:
 	CMSat::SATSolver m_solver;
 	int m_variable_count;
 
-	//! Guarantee that we have \v max_id many variables
+	//! Guarantee that we have \p max_id many variables
 	void make_variables(int max_id)
 	{
 		for (; m_variable_count < max_id; ++m_variable_count) {
