@@ -24,6 +24,4 @@ install:
 
 script:
   - cmake -DUSE_CRYPTOMINISAT=ON -DUSE_LINGELING=ON -DUSE_MINISAT=ON . && make && ctest --verbose
-
-after_success:
-  - make doc
+  - util/check-doxygen-errors.sh
