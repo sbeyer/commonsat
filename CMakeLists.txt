@@ -23,13 +23,13 @@ if(USE_MINISAT)
 endif(USE_MINISAT)
 
 if(USE_CRYPTOMINISAT)
-	set(CRYPTOMINISAT4_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/build/lib/libcryptominisat4.a"
-	    CACHE FILEPATH "Library for CryptoMiniSat 4")
-	set(CRYPTOMINISAT4_INCLUDE_DIR
+	set(CRYPTOMINISAT_LIBRARY
+	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/build/lib/libcryptominisat5.so"
+	    CACHE FILEPATH "Library for CryptoMiniSat")
+	set(CRYPTOMINISAT_INCLUDE_DIR
 	    "${PROJECT_SOURCE_DIR}/solvers/cryptominisat/build/include"
-	    CACHE PATH "Include directory for CryptoMiniSat 4")
-	add_test(NAME CryptoMiniSat COMMAND test_cryptominisat4)
+	    CACHE PATH "Include directory for CryptoMiniSat")
+	add_test(NAME CryptoMiniSat COMMAND test_cryptominisat)
 endif(USE_CRYPTOMINISAT)
 
 if(USE_LINGELING)

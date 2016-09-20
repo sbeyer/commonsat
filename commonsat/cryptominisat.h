@@ -28,7 +28,7 @@
 
 #include <stdexcept>
 #include <commonsat/commonsat.h>
-#include <cryptominisat4/cryptominisat.h>
+#include <cryptominisat5/cryptominisat.h>
 
 namespace commonsat {
 
