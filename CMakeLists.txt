@@ -50,7 +50,7 @@ if(USE_PICOSAT)
 	set(PICOSAT_INCLUDE_DIR
 	    "${PROJECT_SOURCE_DIR}/solvers/picosat"
 	    CACHE PATH "Include directory for PicoSAT")
-	add_test(NAME picosat COMMAND test_lingeling)
+	add_test(NAME picosat COMMAND test_picosat)
 endif(USE_PICOSAT)
 
 add_subdirectory(test)
