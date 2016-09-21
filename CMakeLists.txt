@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 option(USE_CRYPTOMINISAT "Use CryptoMiniSat solver" OFF)
 option(USE_MINISAT "Use MiniSat solver" OFF)
 option(USE_LINGELING "Use Lingeling solver" OFF)
+option(USE_PICOSAT "Use PicoSAT solver" OFF)
 
 include_directories("${PROJECT_SOURCE_DIR}/")
 
@@ -41,6 +42,16 @@ if(USE_LINGELING)
 	    CACHE PATH "Include directory for lingeling")
 	add_test(NAME Lingeling COMMAND test_lingeling)
 endif(USE_LINGELING)
+
+if(USE_PICOSAT)
+	set(PICOSAT_LIBRARY
+	    "${PROJECT_SOURCE_DIR}/solvers/picosat/libpicosat.a"
+	    CACHE FILEPATH "Library for PicoSAT")
+	set(PICOSAT_INCLUDE_DIR
+	    "${PROJECT_SOURCE_DIR}/solvers/picosat"
+	    CACHE PATH "Include directory for PicoSAT")
+	add_test(NAME picosat COMMAND test_lingeling)
+endif(USE_PICOSAT)
 
 add_subdirectory(test)
 

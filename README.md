@@ -22,7 +22,7 @@ for SAT solver libraries like
  - [X] Lingeling
  - [ ] Plingeling
  - [ ] Treengeling
- - [ ] PicoSat
+ - [X] PicoSat
  - [ ] PrecoSat
  - [ ] YALS
 
