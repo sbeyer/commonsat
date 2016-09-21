@@ -1,6 +1,6 @@
 /*! \file
  * \brief Definition of the Lingeling interface for CommonSAT.
- * \copyright Copyright 2015 Stephan Beyer.
+ * \copyright Copyright 2015–2016 Stephan Beyer.
  * \par
  * This file is part of CommonSAT.
  * \par
@@ -36,7 +36,7 @@ namespace commonsat {
 //! The solver interface for Lingeling
 class SolverLingeling : public SolverInterface {
 protected:
-	LGL *m_solver; //!< An pointer to an instance of the Lingeling solver
+	LGL *m_solver; //!< A pointer to an instance of the Lingeling solver
 
 public:
 	SolverLingeling()

@@ -1,6 +1,6 @@
 /*! \file
  * \brief Definition of the main interface for CommonSAT.
- * \copyright Copyright 2015 Stephan Beyer.
+ * \copyright Copyright 2015–2016 Stephan Beyer.
  * \par
  * This file is part of CommonSAT.
  * \par
@@ -50,15 +50,15 @@ public:
 	}
 
 	//! Add a clause to the CNF
-	// \example add_clause({1, -2, -3, 6}) adds clause {x_1, not x_2, not x_3, x_6}
+	//! \example add_clause({1, -2, -3, 6}) adds clause {x_1, not x_2, not x_3, x_6}
 	virtual void add_clause(const clause_t &clause) = 0;
 
 	//! Solve the CNF given by the added clauses
-	// \return true if the CNF is satisfiable, false if not
+	//! \return true if the CNF is satisfiable, false if not
 	virtual bool solve() = 0;
 
 	//! Get assignment of a variable
-	// \return the assignment
+	//! \return the assignment
 	virtual Assignment get_assignment(int var) const = 0;
 
 	//! Return true if a variable assignment is defined
