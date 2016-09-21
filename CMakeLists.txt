@@ -34,10 +34,10 @@ endif(USE_CRYPTOMINISAT)
 
 if(USE_LINGELING)
 	set(LINGELING_LIBRARY
-	    "${PROJECT_SOURCE_DIR}/solvers/lingeling/code/liblgl.a"
+	    "${PROJECT_SOURCE_DIR}/solvers/lingeling/liblgl.a"
 	    CACHE FILEPATH "Library for lingeling")
 	set(LINGELING_INCLUDE_DIR
-	    "${PROJECT_SOURCE_DIR}/solvers/lingeling/code"
+	    "${PROJECT_SOURCE_DIR}/solvers/lingeling"
 	    CACHE PATH "Include directory for lingeling")
 	add_test(NAME Lingeling COMMAND test_lingeling)
 endif(USE_LINGELING)

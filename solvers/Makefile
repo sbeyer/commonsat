@@ -1,6 +1,6 @@
 all: minisat cryptominisat lingeling
 
-LINGELING_VERSION=ayv-86bf266-140429
+LINGELING_VERSION=bal-2293bef-151109
 
 minisat:
 	git clone https://github.com/niklasso/minisat
@@ -11,9 +11,10 @@ cryptominisat:
 	$(MAKE) compile_cryptominisat
 
 lingeling:
-	curl -o ll.zip http://fmv.jku.at/lingeling/lingeling-$(LINGELING_VERSION).zip
-	unzip -d lingeling ll.zip
-	$(RM) ll.zip
+	curl -o ll.tar.gz http://fmv.jku.at/lingeling/lingeling-$(LINGELING_VERSION).tar.gz
+	tar xf ll.tar.gz
+	mv lingeling-$(LINGELING_VERSION) lingeling
+	$(RM) ll.tar.gz
 	$(MAKE) compile_lingeling
 
 .PHONY: compile_all \
@@ -28,6 +29,7 @@ compile_cryptominisat:
 	$(MAKE) -C cryptominisat/build
 
 compile_lingeling:
-	cd lingeling && ./build.sh
+	cd lingeling && ./configure.sh
+	$(MAKE) -C lingeling
 
 compile_all: compile_minisat compile_cryptominisat compile_lingeling
