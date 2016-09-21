@@ -17,12 +17,6 @@ git:
   depth: 3
   submodules: false
 
-before_install:
-  - git submodule update --init --recursive
-
-install:
-  - make -C solvers
-
 script:
-  - cmake -DUSE_CRYPTOMINISAT=ON -DUSE_LINGELING=ON -DUSE_MINISAT=ON -DUSE_PICOSAT=ON . && make && ctest --verbose
+  - util/quickstart.sh
   - util/check-doxygen-errors.sh

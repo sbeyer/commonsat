@@ -2,6 +2,10 @@
 
 CommonSAT is intended as a common C++11 SAT solver interface for different SAT solvers.
 
+[![Build Status](https://travis-ci.org/sbeyer/commonsat.svg)](https://travis-ci.org/sbeyer/commonsat)
+
+## So... what is CommonSAT?
+
 It is a header-only library, providing a common interface for
 
  - [ ] reading CNFs in DIMACS format
@@ -29,4 +33,17 @@ for SAT solver libraries like
 Note that the things mentioned above are TODO list items that are probably not
 implemented.
 
-[![Build Status](https://travis-ci.org/sbeyer/commonsat.svg)](https://travis-ci.org/sbeyer/commonsat)
+## How do I get something to run ...quickly?
+
+The quickest way to get started is along the following lines:
+```sh
+sudo apt install git cmake doxygen graphviz
+git clone https://github.com/sbeyer/commonsat.git
+cd commonsat
+util/quickstart.sh
+doxygen .
+```
+
+The quickstart script will do a lot of magic, like updating submodules (for
+the test suite), obtaining and compiling all the supported solvers, and
+compile and run the commonsat tests.
