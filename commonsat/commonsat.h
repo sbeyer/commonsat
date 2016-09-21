@@ -50,7 +50,8 @@ public:
 	}
 
 	//! Add a clause to the CNF
-	//! \example add_clause({1, -2, -3, 6}) adds clause {x_1, not x_2, not x_3, x_6}
+	//!
+	//! For example, `add_clause({1, -2, -3, 6})` adds clause {x_1, not x_2, not x_3, x_6}
 	virtual void add_clause(const clause_t &clause) = 0;
 
 	//! Solve the CNF given by the added clauses
