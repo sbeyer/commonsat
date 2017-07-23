@@ -19,7 +19,7 @@ then
 	echo
 	echo "== Doxygen warnings/errors =="
 	cat "$STDERR"
-	ret=`wc -l "$STDERR"`
+	ret="$(wc -l "$STDERR")"
 fi
 
 cleanup
