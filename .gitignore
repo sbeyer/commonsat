@@ -1,7 +1,9 @@
 /Makefile
-CMakeCache.txt
+/CMakeCache.txt
+/CMakeDoxyfile.in
+/CMakeDoxygenDefaults.cmake
 CMakeFiles
 cmake_install.cmake
 CTestTestfile.cmake
-Testing
+/Testing
 /doc
