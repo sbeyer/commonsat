@@ -4,6 +4,7 @@ CommonSAT is intended as a common C++11 SAT solver interface for different SAT s
 
 [![Build Status](https://travis-ci.org/sbeyer/commonsat.svg)](https://travis-ci.org/sbeyer/commonsat)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d2e9f78b43924f418914201125716925)](https://www.codacy.com/app/sbeyer/commonsat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sbeyer/commonsat&amp;utm_campaign=Badge_Grade)
+[![CodeDocs](https://codedocs.xyz/sbeyer/commonsat.svg)](https://codedocs.xyz/sbeyer/commonsat/)
 
 ## So... what is CommonSAT?
 
