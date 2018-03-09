@@ -56,4 +56,4 @@ endif(USE_PICOSAT)
 add_subdirectory(test)
 
 find_package(Doxygen)
-add_custom_target(doc ${DOXYGEN_EXECUTABLE} doxygen.cfg)
+add_custom_target(doc ${DOXYGEN_EXECUTABLE} Doxyfile)
