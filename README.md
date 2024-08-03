@@ -39,10 +39,19 @@ implemented.
 
 The quickest way to get started is along the following lines:
 ```sh
-sudo apt install git cmake doxygen graphviz
+# install dependencies, e.g.,
+sudo apt install git cmake doxygen graphviz zlib1g-dev libgmp-dev
+# or
+sudo dnf install git cmake doxygen graphviz zlib-devel gmp-devel
+
+# clone the repo
 git clone https://github.com/sbeyer/commonsat.git
+
+# run the quickstart script
 cd commonsat
 util/quickstart.sh
+
+# make the documentation
 doxygen .
 ```
 

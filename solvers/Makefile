@@ -7,7 +7,17 @@ minisat:
 	# https://github.com/niklasso/minisat is unmaintained and does not compile, hence we use a fork
 	git clone -b fix-c++ https://github.com/spakin/minisat
 
-cryptominisat:
+# dependency of cryptominisat
+cadical:
+	git clone -b mate-only-libraries-1.8.0 https://github.com/meelgroup/cadical
+	cd cadical && ./configure && make
+
+# dependency of cryptominisat
+cadiback:
+	git clone -b mate https://github.com/meelgroup/cadiback
+	cd cadiback && ./configure && make
+
+cryptominisat: cadical cadiback
 	git clone https://github.com/msoos/cryptominisat.git
 
 lingeling:
