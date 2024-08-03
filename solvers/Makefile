@@ -4,7 +4,8 @@ LINGELING_VERSION=bal-2293bef-151109
 PICOSAT_VERSION=965
 
 minisat:
-	git clone https://github.com/niklasso/minisat
+	# https://github.com/niklasso/minisat is unmaintained and does not compile, hence we use a fork
+	git clone -b fix-c++ https://github.com/spakin/minisat
 
 cryptominisat:
 	git clone https://github.com/msoos/cryptominisat.git
