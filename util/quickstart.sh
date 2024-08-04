@@ -7,6 +7,10 @@ CMAKE_SOLVERS="$(for solver in $SOLVERS ; do echo -n " -DUSE_$solver=ON" ; done)
 
 git submodule update --init --recursive &&
 make -C solvers &&
-cmake $CMAKE_SOLVERS . &&
-make &&
-ctest --verbose
+cmake -B build $CMAKE_SOLVERS -DCMAKE_EXPORT_COMPILE_COMMANDS=ON . || exit
+
+( cd build &&
+  make &&
+  ctest )
+
+test -e compile_commands.json || ln -s build/compile_commands.json

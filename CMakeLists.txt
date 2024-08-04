@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.25)
 
 project(CommonSAT)
 
@@ -56,4 +56,6 @@ endif(USE_PICOSAT)
 add_subdirectory(test)
 
 find_package(Doxygen)
-add_custom_target(doc ${DOXYGEN_EXECUTABLE} Doxyfile)
+add_custom_target(doc
+	COMMAND ${DOXYGEN_EXECUTABLE} Doxyfile
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})

@@ -1,9 +1,9 @@
 # CommonSAT
 
-CommonSAT is intended as a common C++11 SAT solver interface for different SAT solvers.
+CommonSAT is intended as a common SAT solver interface for different SAT solvers.
 
-[![Build Status](https://travis-ci.org/sbeyer/commonsat.svg)](https://travis-ci.org/sbeyer/commonsat)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d2e9f78b43924f418914201125716925)](https://www.codacy.com/app/sbeyer/commonsat?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sbeyer/commonsat&amp;utm_campaign=Badge_Grade)
+The minimum required C++ version is C++11.
+
 [![CodeDocs](https://codedocs.xyz/sbeyer/commonsat.svg)](https://codedocs.xyz/sbeyer/commonsat/)
 
 ## So... what is CommonSAT?
@@ -35,15 +35,42 @@ for SAT solver libraries like
 Note that the things mentioned above are TODO list items that are probably not
 implemented.
 
+## Code example
+
+```c++
+/* commonsat::SolverInterface solver */
+solver.add_clause({1, 2});
+solver.add_clause({1, -2, 3});
+solver.add_clause({-1, 2});
+solver.add_clause({-1, -2});
+bool isSatisfiable = solver.solve();
+if (isSatisfiable) {
+  for (int i : std::views::iota(1, 4)) {
+    std::println("Variable {} is assigned {}", i, solver.is_true(2));
+  }
+} else {
+  std::println("Not satisfiable");
+}
+```
+
 ## How do I get something to run ...quickly?
 
 The quickest way to get started is along the following lines:
 ```sh
-sudo apt install git cmake doxygen graphviz
+# install dependencies, e.g.,
+sudo apt install git cmake doxygen graphviz zlib1g-dev libgmp-dev
+# or
+sudo dnf install git cmake doxygen graphviz zlib-devel gmp-devel
+
+# clone the repo
 git clone https://github.com/sbeyer/commonsat.git
+
+# run the quickstart script
 cd commonsat
 util/quickstart.sh
-doxygen .
+
+# make the documentation
+util/check-doxygen-errors.sh
 ```
 
 The quickstart script will do a lot of magic, like updating submodules (for

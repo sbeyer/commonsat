@@ -1,6 +1,6 @@
 /*! \file
  * \brief Definition of the main interface for CommonSAT.
- * \copyright Copyright 2015–2016 Stephan Beyer.
+ * \copyright Copyright 2015–2024 Stephan Beyer.
  * \par
  * This file is part of CommonSAT.
  * \par
@@ -26,7 +26,6 @@
 #ifndef COMMONSAT_H
 #define COMMONSAT_H
 
-#include <stdexcept>
 #include <vector>
 #include <cstdint>
 
@@ -45,9 +44,8 @@ enum class Assignment : std::uint8_t {
 //! The general solver interface class
 class SolverInterface {
 public:
-	SolverInterface()
-	{
-	}
+	SolverInterface() = default;
+	virtual ~SolverInterface() = default;
 
 	//! Add a clause to the CNF
 	//!
