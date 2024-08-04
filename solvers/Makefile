@@ -1,6 +1,5 @@
 all: compile_all
 
-LINGELING_VERSION=bal-2293bef-151109
 PICOSAT_VERSION=965
 
 minisat:
@@ -21,10 +20,7 @@ cryptominisat: cadical cadiback
 	git clone https://github.com/msoos/cryptominisat.git
 
 lingeling:
-	curl -o ll.tar.gz http://fmv.jku.at/lingeling/lingeling-$(LINGELING_VERSION).tar.gz
-	tar xf ll.tar.gz
-	mv lingeling-$(LINGELING_VERSION) lingeling
-	$(RM) ll.tar.gz
+	git clone https://github.com/arminbiere/lingeling
 
 picosat:
 	curl -o ps.tar.gz http://fmv.jku.at/picosat/picosat-$(PICOSAT_VERSION).tar.gz
