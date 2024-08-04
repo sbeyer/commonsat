@@ -52,7 +52,7 @@ cd commonsat
 util/quickstart.sh
 
 # make the documentation
-doxygen .
+util/check-doxygen-errors.sh
 ```
 
 The quickstart script will do a lot of magic, like updating submodules (for

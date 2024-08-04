@@ -4,7 +4,7 @@
 STDOUT="dox-stdout-$$"
 STDERR="dox-stderr-$$"
 
-make doc >$STDOUT 2>$STDERR
+make -C build doc >$STDOUT 2>$STDERR
 cleanup() {
 	rm -f "$STDOUT" "$STDERR"
 }
