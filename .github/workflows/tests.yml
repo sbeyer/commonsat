@@ -1,0 +1,12 @@
+name: Compilation and Tests
+
+on: [push, pull_request]
+
+jobs:
+  linux-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone and checkout commit
+        uses: actions/checkout@v4
+      - name: Quickstart
+        run: util/quickstart.sh
