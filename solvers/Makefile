@@ -18,7 +18,7 @@ picosat:
 	mv picosat-$(PICOSAT_VERSION) picosat
 	$(RM) ps.tar.gz
 
-.PHONY: compile_all
+.PHONY: compile_all clean
 
 compile_minisat: minisat
 	cd minisat && mkdir -p build && cd build && cmake ..
@@ -55,3 +55,9 @@ compile_picosat: picosat
 	echo "Removing this file will make Make compile PicoSAT again." >"$@"
 
 compile_all: compile_minisat compile_cryptominisat compile_lingeling compile_picosat
+
+clean:
+	$(RM) -f compile_minisat compile_cryptominisat compile_lingeling compile_picosat
+	$(RM) -rf minisat cryptominisat lingeling picosat
+	$(RM) -f compile_cadical compile_cadiback
+	$(RM) -rf cadical cadiback
