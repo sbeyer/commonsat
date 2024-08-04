@@ -13,7 +13,7 @@ lingeling:
 	git clone https://github.com/arminbiere/lingeling
 
 picosat:
-	curl -o ps.tar.gz http://fmv.jku.at/picosat/picosat-$(PICOSAT_VERSION).tar.gz
+	curl -o ps.tar.gz https://fmv.jku.at/picosat/picosat-$(PICOSAT_VERSION).tar.gz
 	tar xf ps.tar.gz
 	mv picosat-$(PICOSAT_VERSION) picosat
 	$(RM) ps.tar.gz
