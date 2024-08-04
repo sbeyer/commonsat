@@ -1,6 +1,6 @@
 /*! \file
  * \brief Definition of the CryptoMiniSat interface for CommonSAT.
- * \copyright Copyright 2015 Stephan Beyer.
+ * \copyright Copyright 2015–2024 Stephan Beyer.
  * \par
  * This file is part of CommonSAT.
  * \par
