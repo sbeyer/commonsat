@@ -1,7 +1,9 @@
 #include "tests.h"
 
+#include <bandit/assertion_frameworks/snowhouse/snowhouse.h>
 #include <commonsat/commonsat.h>
-#include <bandit/bandit.h>
+
+using namespace snowhouse;
 
 void test_satisfiable(commonsat::SolverInterface &solver)
 {
