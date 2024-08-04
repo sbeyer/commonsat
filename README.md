@@ -1,6 +1,8 @@
 # CommonSAT
 
-CommonSAT is intended as a common C++11 SAT solver interface for different SAT solvers.
+CommonSAT is intended as a common SAT solver interface for different SAT solvers.
+
+The minimum required C++ version is C++11.
 
 [![CodeDocs](https://codedocs.xyz/sbeyer/commonsat.svg)](https://codedocs.xyz/sbeyer/commonsat/)
 
@@ -32,6 +34,24 @@ for SAT solver libraries like
 
 Note that the things mentioned above are TODO list items that are probably not
 implemented.
+
+## Code example
+
+```c++
+/* commonsat::SolverInterface solver */
+solver.add_clause({1, 2});
+solver.add_clause({1, -2, 3});
+solver.add_clause({-1, 2});
+solver.add_clause({-1, -2});
+bool isSatisfiable = solver.solve();
+if (isSatisfiable) {
+  for (int i : std::views::iota(1, 4)) {
+    std::println("Variable {} is assigned {}", i, solver.is_true(2));
+  }
+} else {
+  std::println("Not satisfiable");
+}
+```
 
 ## How do I get something to run ...quickly?
 
