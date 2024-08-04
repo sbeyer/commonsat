@@ -26,7 +26,6 @@
 #ifndef COMMONSAT_H
 #define COMMONSAT_H
 
-#include <stdexcept>
 #include <vector>
 #include <cstdint>
 
@@ -45,9 +44,8 @@ enum class Assignment : std::uint8_t {
 //! The general solver interface class
 class SolverInterface {
 public:
-	SolverInterface()
-	{
-	}
+	SolverInterface() = default;
+	virtual ~SolverInterface() = default;
 
 	//! Add a clause to the CNF
 	//!
